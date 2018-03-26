@@ -16,7 +16,7 @@ VOLUME /home/$USERNAME
 RUN echo "$USERNAME:$PASSWORD" | chpasswd
 
 ENV USER=$USERNAME
-RUN curl https://install.meteor.com/?release=$METEOR_VERSION | sh
+RUN curl https://install.meteor.com/ | sh
 
 WORKDIR /home/$USERNAME
 
