@@ -1,2 +1,2 @@
-readme
+Building for meteor 1.6.1
 
