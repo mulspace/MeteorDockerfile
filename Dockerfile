@@ -15,7 +15,7 @@ RUN useradd -ms /bin/bash -g root -d /home/$USERNAME  $USERNAME && adduser $USER
 VOLUME /home/$USERNAME
 RUN echo "$USERNAME:$PASSWORD" | chpasswd
 
-ENV USER=$USERNAME
+USER $USERNAME
 RUN curl https://install.meteor.com/ | sh
 
 WORKDIR /home/$USERNAME
