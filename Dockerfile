@@ -18,8 +18,6 @@ RUN echo "$USERNAME:$PASSWORD" | chpasswd
 ENV USER=$USERNAME
 RUN curl https://install.meteor.com/?release=$METEOR_VERSION | sh
 
-ADD entrypoint.sh /entrypoint.sh
-
 WORKDIR /home/$USERNAME
 
 EXPOSE 3000
