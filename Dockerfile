@@ -2,7 +2,7 @@ FROM node:0.10
 
 MAINTAINER Kevin Fu (mulspace@gmail.com)
 
-ENV METEOR_VERSION 1.6.1
+ENV METEOR_VERSION latest
 ENV USERNAME=meteor
 ENV PASSWORD=meteor
 
