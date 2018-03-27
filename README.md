@@ -9,5 +9,8 @@
     meteor create test && cd test && MONGO_URL=mongodb://mongo:27017/test meteor
 
 # Run the meteor directly when start the container.
-    docker run -it --rm --link mongo:mongo -p 3000:3000 -v $PWD:test:/home/meteor mulspace/meteor bash -c "cd test && MONGO_URL=mongodb://mongo:27017/test meteor"
+    docker run -it --rm --link mongo:mongo -p 3000:3000 \
+        -v $PWD:test:/home/meteor \
+        mulspace/meteor \
+        bash -c "cd test && MONGO_URL=mongodb://mongo:27017/test meteor"
 
