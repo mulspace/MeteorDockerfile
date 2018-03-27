@@ -5,20 +5,21 @@ MAINTAINER Kevin Fu (mulspace@gmail.com)
 ENV METEOR_VERSION latest
 ENV USERNAME=meteor
 ENV PASSWORD=meteor
-
+ENV METEOR_ALLOW_SUPERUSER=true
 
 RUN apt-get update
-RUN apt-get install -y curl python git
+RUN apt-get install -y curl 
 
 ENV DEBIAN_FRONTEND noninteractive
-RUN useradd -ms /bin/bash -g root -d /home/$USERNAME  $USERNAME && adduser $USERNAME sudo
+RUN useradd -ms /bin/bash -g users -d /home/$USERNAME  $USERNAME 
 VOLUME /home/$USERNAME
 RUN echo "$USERNAME:$PASSWORD" | chpasswd
 
-USER $USERNAME
 RUN curl https://install.meteor.com/ | sh
 
 WORKDIR /home/$USERNAME
+# Try to create a meteor project to trigger downloading common modules
+RUN meteor create test && rm -rf test
 
 EXPOSE 3000
 
