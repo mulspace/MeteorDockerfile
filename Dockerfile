@@ -22,5 +22,6 @@ ENV PATH="/home/$USERNAME/.meteor:${PATH}"
 # Try to create a meteor project to trigger downloading common modules
 RUN meteor create test && rm -rf test
 
+VOLUME /app
 EXPOSE 3000
 
