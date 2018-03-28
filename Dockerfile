@@ -11,13 +11,14 @@ RUN apt-get update
 RUN apt-get install -y curl 
 
 ENV DEBIAN_FRONTEND noninteractive
-RUN useradd -ms /bin/bash -g users -d /home/$USERNAME  $USERNAME 
-VOLUME /home/$USERNAME
+RUN useradd -ms /bin/bash -g root -d /home/$USERNAME  $USERNAME 
 RUN echo "$USERNAME:$PASSWORD" | chpasswd
 
-RUN curl https://install.meteor.com/?release=$METEOR_VERSION | sh
-
+USER $USERNAME
 WORKDIR /home/$USERNAME
+RUN curl https://install.meteor.com/?release=$METEOR_VERSION | sh
+ENV PATH="/home/$USERNAME/.meteor:${PATH}"
+
 # Try to create a meteor project to trigger downloading common modules
 RUN meteor create test && rm -rf test
 
