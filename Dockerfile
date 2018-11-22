@@ -2,12 +2,13 @@ FROM node:0.10
 
 MAINTAINER Kevin Fu (mulspace@gmail.com)
 
+ENV METEOR_VERSION 1.8.1
 ENV METEOR_ALLOW_SUPERUSER=true
 
 RUN apt-get update
 RUN apt-get install -y curl 
 
-RUN curl https://install.meteor.com/ | sh
+RUN curl https://install.meteor.com/?release=$METEOR_VERSION | sh
 
 VOLUME /app
 WORKDIR /app
