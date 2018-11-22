@@ -2,7 +2,7 @@ FROM node:0.10
 
 MAINTAINER Kevin Fu (mulspace@gmail.com)
 
-ENV METEOR_VERSION 1.7
+ENV METEOR_VERSION 1.8
 ENV METEOR_ALLOW_SUPERUSER=true
 
 RUN apt-get update
